@@ -8,7 +8,7 @@ dotenv.config()
 const app = express()
 
 // database connection
-mongoose.connect(process.env.MONGO).then(res =>{
+mongoose.connect(process.env.MONGO).then(() =>{
     console.log("Mongo db is connected")
 }).catch(err =>{
     console.log(err.message)
