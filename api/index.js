@@ -2,7 +2,8 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import userRoutes from './routes/user.route.js'
+import userRoute from './routes/user.route.js'
+import authRoute from './routes/auth.route.js'
 // initialize
 dotenv.config()
 const app = express()
@@ -22,4 +23,6 @@ app.listen(process.env.PORT, ()=>{
 
 app.use(express.json())
 
-app.use('/api/user', userRoutes);
+app.use('/api/user', userRoute);
+
+app.use('/api/auth', authRoute);
