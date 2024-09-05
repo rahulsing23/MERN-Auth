@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 const SignUp = () => {
   
   const [formData, setformData] = useState({});
   const [Loading, setLoading] = useState(false);
   const [Error, setError] = useState(false);
-
+  const navigate = useNavigate()
   const handleChange = (e) =>{
 
     setformData({...formData, [e.target.id]: e.target.value})
-    console.log(formData);
+
   }
 
   const handleSubmit = async (e) =>{
@@ -25,13 +25,14 @@ const SignUp = () => {
         body:JSON.stringify(formData)
       })
       const data = await res.json();
-      console.log(data)
+    
       setLoading(false);
       if(data.success === false)
       {
         setError(true);
         return ;
       }
+      navigate('/sign-in')
     }
     catch(error)
     {
