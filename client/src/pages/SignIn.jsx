@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import { signInStart, signInFailure, signInSuccess } from '../redux/user/userSlice';
 import {useDispatch, useSelector} from 'react-redux'
+import OAuth from '../components/OAuth';
 
 
 
@@ -32,8 +33,8 @@ const SignIn = () => {
         headers:{
           'Content-Type': 'application/json',
         },
-        body:JSON.stringify(formData)
-      })
+        body:JSON.stringify(formData),
+      })  
       const data = await res.json();
      
      
@@ -63,6 +64,7 @@ const SignIn = () => {
           loading ? 'Loading...':'Sign In'
         }
         </button>
+        <OAuth/>
       </form>
       <div className="flex  gap-2 mt-5  justify-center ">
        <p>Create new account? </p> 
@@ -71,7 +73,7 @@ const SignIn = () => {
        </Link>
        
       </div>
-      <p hidden={!error} className='text-red-700 mt-5 bg-red-100 p-2'>{error ? error.message || 'Something went wrong': ""}</p>
+      <p className='text-red-700 mt-5'>{error ? error.message || 'Something went wrong!': ""}</p>
     </div>
   )
 }
