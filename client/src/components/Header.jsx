@@ -22,7 +22,6 @@ const Header = () => {
             ):
               ( 
                 <li>Sign In</li>
-
               )  
             }
             </Link>
